@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "rmsdashboard-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rmsdashboardWebpart/RmsdashboardWebpartWebPart.js",
+          "manifest": "./src/webparts/rmsdashboardWebpart/RmsdashboardWebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js"
+  }
+}

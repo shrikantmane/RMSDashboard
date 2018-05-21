@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "rms-dashboard-client-side-solution",
+    "id": "fe281dff-ed4b-47e1-8f7f-d9465b63651b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/rms-dashboard.sppkg"
+  }
+}

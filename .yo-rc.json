@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "rms-dashboard",
+    "libraryId": "fe281dff-ed4b-47e1-8f7f-d9465b63651b",
+    "environment": "spo"
+  }
+}
