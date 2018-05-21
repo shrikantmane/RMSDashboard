@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/rmsdashboardWebpart/RmsdashboardWebpartWebPart.manifest.json"
         }
       ]
+    },
+    "rms-postions-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rmsPostionsWebpart/RmsPostionsWebpartWebPart.js",
+          "manifest": "./src/webparts/rmsPostionsWebpart/RmsPostionsWebpartWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js"
+    "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js",
+    "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js"
   }
 }
