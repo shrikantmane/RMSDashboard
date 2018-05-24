@@ -1,0 +1,26 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0baa5732-458b-4745-8f34-db7c2c004e2d",
+  "alias": "RmsApplicationSourcesChartWebPart",
+  "componentType": "WebPart",
+
+  
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "Other" },
+    "title": { "default": "rmsApplicationSourcesChart" },
+    "description": { "default": "This webpart is to display statistics for Application Sources " },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "rmsApplicationSourcesChart",
+      "numCharts": 1,
+      "state": false,
+      "maxResults": 25,
+      "listOptions": []
+    }
+  }]
+}
