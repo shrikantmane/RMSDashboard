@@ -111,7 +111,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
   public componentDidMount() {
     var reactHandler = this;
     jquery.ajax({
-      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
+      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=4&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
       type: "GET",
       headers: { 'Accept': 'application/json; odata=verbose;' },
       success: function (resultData) {
