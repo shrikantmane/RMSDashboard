@@ -17,7 +17,7 @@
           "manifest": "./src/webparts/rmsPostionsWebpart/RmsPostionsWebpartWebPart.manifest.json"
         }
       ]
-    },    
+    },
     "rms-application-sources-chart-web-part": {
       "components": [
         {
@@ -25,12 +25,30 @@
           "manifest": "./src/webparts/rmsApplicationSourcesChart/RmsApplicationSourcesChartWebPart.manifest.json"
         }
       ]
+    },
+    "dashboard-stats-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dashboardStats/DashboardStatsWebPart.js",
+          "manifest": "./src/webparts/dashboardStats/DashboardStatsWebPart.manifest.json"
+        }
+      ]
     }
   },
-  "externals": {},
+  "externals": {
+    "jquery": {
+      "path": "node_modules/jquery/dist/jquery.min.js",
+      "globalName": "jQuery"
+    },
+    "bootstrap": {
+      "path": "node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "globalName": "bootstrap"
+    }
+  },
   "localizedResources": {
     "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js",
     "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js",
-    "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js"
+    "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
+    "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js"
   }
 }
