@@ -33,6 +33,22 @@
           "manifest": "./src/webparts/dashboardStats/DashboardStatsWebPart.manifest.json"
         }
       ]
+    },
+    "rms-interview-calender-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rmsInterviewCalenderWebpart/RmsInterviewCalenderWebpartWebPart.js",
+          "manifest": "./src/webparts/rmsInterviewCalenderWebpart/RmsInterviewCalenderWebpartWebPart.manifest.json"
+        }
+      ]
+    },
+    "rms-productivity-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.js",
+          "manifest": "./src/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -49,6 +65,8 @@
     "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js",
     "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js",
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
-    "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js"
+    "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js",
+    "RmsInterviewCalenderWebpartWebPartStrings": "lib/webparts/rmsInterviewCalenderWebpart/loc/{locale}.js",
+    "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js"
   }
 }
