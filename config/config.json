@@ -17,23 +17,7 @@
           "manifest": "./src/webparts/rmsPostionsWebpart/RmsPostionsWebpartWebPart.manifest.json"
         }
       ]
-    },
-    "rms-sources-chart-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/rmsSourcesChart/RmsSourcesChartWebPart.js",
-          "manifest": "./src/webparts/rmsSourcesChart/RmsSourcesChartWebPart.manifest.json"
-        }
-      ]
-    },
-    "sample-no-framework-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/sampleNoFramework/SampleNoFrameworkWebPart.js",
-          "manifest": "./src/webparts/sampleNoFramework/SampleNoFrameworkWebPart.manifest.json"
-        }
-      ]
-    },
+    },    
     "rms-application-sources-chart-web-part": {
       "components": [
         {
@@ -47,8 +31,6 @@
   "localizedResources": {
     "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js",
     "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js",
-    "RmsSourcesChartWebPartStrings": "lib/webparts/rmsSourcesChart/loc/{locale}.js",
-    "SampleNoFrameworkWebPartStrings": "lib/webparts/sampleNoFramework/loc/{locale}.js",
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js"
   }
 }

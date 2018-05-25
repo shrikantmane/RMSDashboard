@@ -18,10 +18,11 @@ export interface IRmsPostionsWebpartWebPartProps {
 export default class RmsPostionsWebpartWebPart extends BaseClientSideWebPart<IRmsPostionsWebpartWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IRmsPostionsWebpartProps > = React.createElement(
+    const element: React.ReactElement<IRmsPostionsWebpartProps> = React.createElement(
       RmsPostionsWebpart,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteurl: this.context.pageContext.web.absoluteUrl
       }
     );
 
