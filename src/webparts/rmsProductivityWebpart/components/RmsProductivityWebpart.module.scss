@@ -1,0 +1,15 @@
+
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+
+i {  vertical-align: middle; }
+.table-users tbody tr:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+.nav-user-photo {
+     vertical-align: middle;
+}
+.user_panel {
+    width: 20%;
+}
