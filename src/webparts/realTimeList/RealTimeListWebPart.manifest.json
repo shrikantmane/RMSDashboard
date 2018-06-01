@@ -1,0 +1,20 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0d6812bf-1ded-4213-ab1a-c2fb31e227c8",
+  "alias": "RealTimeListWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "realTimeList" },
+    "description": { "default": "to display list items immediately on web part after adding data to SP List" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "realTimeList"
+    }
+  }]
+}

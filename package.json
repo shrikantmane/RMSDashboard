@@ -23,7 +23,7 @@
     "chart.js": "^2.7.2",
     "color-scheme": "^1.0.0",
     "jquery": "^3.3.1",
-    "office-ui-fabric-react": "^5.111.0",
+    "office-ui-fabric-react": "^5.112.0",
     "react": "15.6.2",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "15.6.2",
@@ -32,7 +32,9 @@
     "react-progressbar": "^15.4.1",
     "react-sweet-progress": "^1.1.0",
     "react-typestyle-inline": "^0.3.3",
-    "reactstrap": "^6.0.1"
+    "reactstrap": "^6.0.1",
+    "sp-pnp-js": "^3.0.8",
+    "ws": "^5.2.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
