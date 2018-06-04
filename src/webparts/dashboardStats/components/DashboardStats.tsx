@@ -23,41 +23,33 @@ export default class DashboardStats extends React.Component<IDashboardStatsProps
           <div className="row">
                 <div className="col-sm-3">
                   <div className="card text-white bg-primary mb-3" style={{maxWidth: '18rem', maxHeight: '9rem'}} >
-                    <div className="card-header" style={{fontSize: '16px', fontWeight : 'bold'}}>Openings</div>
+                    <div className="card-header text-center" style={{fontSize: '16px', fontWeight : 'bold'}}>Openings</div>
                     <div className="card-body">
-                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>
-                      {this.getCount("Openings")}
-                      </h5>
+                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>150</h5>
                     </div>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="card text-white bg-secondary mb-3" style={{maxWidth: '18rem', maxHeight: '9rem'}}>
-                    <div className="card-header" style={{fontSize: '16px', fontWeight : 'bold'}}>Interviews</div>
+                    <div className="card-header text-center" style={{fontSize: '16px', fontWeight : 'bold'}}>Interviews</div>
                     <div className="card-body">
-                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>
-                      {this.getCount("Interviews")}
-                      </h5>
+                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>40</h5>
                     </div>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="card text-white bg-success mb-3" style={{maxWidth: '18rem', maxHeight: '9rem'}}>
-                    <div className="card-header" style = {{fontSize: '16px', fontWeight : 'bold' }}>Offered</div>
+                    <div className="card-header text-center" style = {{fontSize: '16px', fontWeight : 'bold' }}>Offered</div>
                     <div className="card-body">
-                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>
-                      {this.getCount("Offered")}
-                      </h5>
+                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>100</h5>
                     </div>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="card text-white bg-danger mb-3" style={{maxWidth: '18rem', maxHeight: '9rem'}}>
-                    <div className="card-header" style={{fontSize: '16px', fontWeight : 'bold'}}>Declined</div>
+                    <div className="card-header text-center" style={{fontSize: '16px', fontWeight : 'bold'}}>Declined</div>
                     <div className="card-body">
-                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>
-                      {this.getCount("Declined")}
-                      </h5>
+                      <h5 className="card-title" style = {{textAlign: 'center', fontSize: '30px', fontWeight: 'bold'}}>50</h5>
                     </div>
                   </div>
                 </div>
