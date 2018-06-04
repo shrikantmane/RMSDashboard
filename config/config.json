@@ -41,6 +41,30 @@
           "manifest": "./src/webparts/realTimeList/RealTimeListWebPart.manifest.json"
         }
       ]
+    },
+    "sender-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/senderWp/SenderWpWebPart.js",
+          "manifest": "./src/webparts/senderWp/SenderWpWebPart.manifest.json"
+        }
+      ]
+    },
+    "receiver-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/receiverWp/ReceiverWpWebPart.js",
+          "manifest": "./src/webparts/receiverWp/ReceiverWpWebPart.manifest.json"
+        }
+      ]
+    },
+    "sample-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sample/SampleWebPart.js",
+          "manifest": "./src/webparts/sample/SampleWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -58,6 +82,9 @@
     "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js",
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
     "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js",
-    "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js"
+    "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js",
+    "senderWpStrings": "lib/webparts/senderWp/loc/{locale}.js",
+    "receiverWpStrings": "lib/webparts/receiverWp/loc/{locale}.js",
+    "SampleWebPartStrings": "lib/webparts/sample/loc/{locale}.js"
   }
 }
