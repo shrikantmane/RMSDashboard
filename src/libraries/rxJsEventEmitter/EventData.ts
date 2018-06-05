@@ -1,3 +1,3 @@
 ﻿export class EventData {
-  public text: string;
+ public selectedMonth: string;
 }

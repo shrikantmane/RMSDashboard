@@ -16,8 +16,8 @@ export default class SenderWpWebPart extends BaseClientSideWebPart<ISenderWpWebP
 
   public render(): void {
     const element: React.ReactElement<ISenderWpProps > = React.createElement(
-      SenderWp,
-      {
+      SenderWp,{
+       
       }
     );
 

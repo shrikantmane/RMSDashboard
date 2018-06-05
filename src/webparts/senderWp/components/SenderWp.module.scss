@@ -1,3 +1,5 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
 .senderWp {
   .container {
     max-width: 700px;
@@ -53,4 +55,14 @@
       display: inline-block;
     }
   }
+
+  .rmsDashboardHeader{
+    float:left;
+  }
+
+  .rmsDashboardMonthSelector{
+    float: right;
+    margin-top : 20px;
+  }
+
 }

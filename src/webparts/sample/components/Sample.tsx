@@ -47,7 +47,7 @@ export default class Sample extends React.Component<ISampleProps, ISampleState> 
     
     // update the monthValue with the newly received data from the event subscriber.
     this.state = {
-      monthValue : data.text
+      monthValue : data.selectedMonth
     };
 
     // set new state.
