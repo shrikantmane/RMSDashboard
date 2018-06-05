@@ -14,6 +14,9 @@ import {
 } from '@microsoft/sp-http';
 import { canAnyMenuItemsCheck } from 'office-ui-fabric-react/lib/ContextualMenu';
 
+import { RxJsEventEmitter } from "../../../libraries/rxJsEventEmitter/RxJsEventEmitter";
+import { EventData } from "../../../libraries/rxJsEventEmitter/EventData";
+
 <link href="path-to-react-table-filter/lib/styles.css" rel="stylesheet" />
 
 export interface IReactSpfxState {
@@ -28,12 +31,15 @@ export interface IReactSpfxState {
       "Feedback_x0020_Status": "",
       "Positions_x0020_Closed": ""
 
-    }]
+    }],
+    monthValue : string;
 
 }
 
 export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebpartProps, IReactSpfxState> {
 
+  private readonly _eventEmitter: RxJsEventEmitter = RxJsEventEmitter.getInstance();
+    
   public constructor(props: IRmsPostionsWebpartProps, state: IReactSpfxState) {
     super(props);
     this.state = {
@@ -49,10 +55,11 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
           "Positions_x0020_Closed": "",
 
         }
-
-      ]
-
-    };
+      ],
+      monthValue: new Date().getMonth().toLocaleString()
+ };
+    // subscribe for event by event name.
+    this._eventEmitter.on("myCustomEvent:start", this.receivedEvent.bind(this));
 
     this.getBorderColor = this.getBorderColor.bind(this);
     this.getPriorityColor = this.getPriorityColor.bind(this);
@@ -266,8 +273,37 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
           items={this.state.items}
           viewFields={viewFields}
         />
+
       </div>
     );
+  }
+
+  protected receivedEvent(data: EventData): void {
+    
+    // update the monthValue with the newly received data from the event subscriber.
+    this.state = {
+      items: [
+        {
+          "Position_x0020_Title": "",
+          "Practice": { "Title": "" },
+          "No_x0020_of_x0020_Openings": "",
+          "Exp_x0020_Date_x0020_of_x0020_Jo": "",
+
+          "Priority": { "Title": "" },
+          "Feedback_x0020_Status": "",
+          "Positions_x0020_Closed": "",
+
+        }
+      ],
+      monthValue : data.selectedMonth
+    };
+
+    // set new state.
+    this.setState((previousState: IReactSpfxState, props: IRmsPostionsWebpartProps): IReactSpfxState => {
+      previousState.monthValue = this.state.monthValue;
+      return previousState;
+    });
+
   }
 }
 

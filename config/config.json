@@ -42,22 +42,6 @@
         }
       ]
     },
-    "sender-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/senderWp/SenderWpWebPart.js",
-          "manifest": "./src/webparts/senderWp/SenderWpWebPart.manifest.json"
-        }
-      ]
-    },
-    "sample-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/sample/SampleWebPart.js",
-          "manifest": "./src/webparts/sample/SampleWebPart.manifest.json"
-        }
-      ]
-    },
     "rms-interview-calender-webpart-web-part": {
       "components": [
         {
@@ -91,8 +75,6 @@
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
     "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js",
     "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js",
-    "senderWpStrings": "lib/webparts/senderWp/loc/{locale}.js",
-    "SampleWebPartStrings": "lib/webparts/sample/loc/{locale}.js",
     "RmsInterviewCalenderWebpartWebPartStrings": "lib/webparts/rmsInterviewCalenderWebpart/loc/{locale}.js",
     "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
