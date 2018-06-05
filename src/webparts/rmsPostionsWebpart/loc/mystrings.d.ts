@@ -2,6 +2,8 @@ declare interface IRmsPostionsWebpartWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
+
+ 
 }
 
 declare module 'RmsPostionsWebpartWebPartStrings' {

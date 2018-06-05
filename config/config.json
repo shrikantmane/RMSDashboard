@@ -49,6 +49,14 @@
           "manifest": "./src/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.manifest.json"
         }
       ]
+    },
+    "rmsdropdown-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rmsdropdown/RmsdropdownWebPart.js",
+          "manifest": "./src/webparts/rmsdropdown/RmsdropdownWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -67,6 +75,8 @@
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
     "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js",
     "RmsInterviewCalenderWebpartWebPartStrings": "lib/webparts/rmsInterviewCalenderWebpart/loc/{locale}.js",
-    "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js"
+    "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "RmsdropdownWebPartStrings": "lib/webparts/rmsdropdown/loc/{locale}.js"
   }
 }

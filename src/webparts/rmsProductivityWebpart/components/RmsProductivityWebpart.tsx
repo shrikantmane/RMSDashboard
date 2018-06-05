@@ -135,7 +135,7 @@ public render(): React.ReactElement<IRmsProductivityWebpartProps> {
                 <div className="row">
                     <div className="panel panel-default user_panel">
                         <div className="panel-heading">
-                            <b><h3 className="panel-title">User List</h3></b>
+                            <b><h3 className="panel-title">Productivity Leaderboard</h3></b>
                         </div>
 
                         {this.state.UserData.map(function(item,key){  
