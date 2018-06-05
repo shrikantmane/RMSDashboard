@@ -1,7 +1,7 @@
 {
   "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "0e10ff25-88e0-48e9-bef2-0d90f2017157",
-  "alias": "RmsdashboardWebpartWebPart",
+  "id": "0d6812bf-1ded-4213-ab1a-c2fb31e227c8",
+  "alias": "RealTimeListWebPart",
   "componentType": "WebPart",
   "version": "*",
   "manifestVersion": 2,
@@ -10,11 +10,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
-    "title": { "default": "rmsdashboard-webpart" },
-    "description": { "default": "rmsdashboard-webpart description" },
+    "title": { "default": "realTimeList" },
+    "description": { "default": "to display list items immediately on web part after adding data to SP List" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "rmsdashboard-webpart"
+      "description": "realTimeList"
     }
   }]
 }

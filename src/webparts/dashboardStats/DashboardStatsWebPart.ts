@@ -21,7 +21,8 @@ export default class DashboardStatsWebPart extends BaseClientSideWebPart<IDashbo
     const element: React.ReactElement<IDashboardStatsProps > = React.createElement(
       DashboardStats,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteContext : this.context
       }
     );
 

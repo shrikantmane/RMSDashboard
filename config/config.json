@@ -34,6 +34,14 @@
         }
       ]
     },
+    "real-time-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/realTimeList/RealTimeListWebPart.js",
+          "manifest": "./src/webparts/realTimeList/RealTimeListWebPart.manifest.json"
+        }
+      ]
+    },
     "rms-interview-calender-webpart-web-part": {
       "components": [
         {
@@ -47,14 +55,6 @@
         {
           "entrypoint": "./lib/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.js",
           "manifest": "./src/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.manifest.json"
-        }
-      ]
-    },
-    "rmsdropdown-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/rmsdropdown/RmsdropdownWebPart.js",
-          "manifest": "./src/webparts/rmsdropdown/RmsdropdownWebPart.manifest.json"
         }
       ]
     }
@@ -74,9 +74,9 @@
     "RmsPostionsWebpartWebPartStrings": "lib/webparts/rmsPostionsWebpart/loc/{locale}.js",
     "RmsApplicationSourcesChartWebPartStrings": "lib/webparts/rmsApplicationSourcesChart/loc/{locale}.js",
     "DashboardStatsWebPartStrings": "lib/webparts/dashboardStats/loc/{locale}.js",
+    "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js",
     "RmsInterviewCalenderWebpartWebPartStrings": "lib/webparts/rmsInterviewCalenderWebpart/loc/{locale}.js",
     "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "RmsdropdownWebPartStrings": "lib/webparts/rmsdropdown/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
