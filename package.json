@@ -16,6 +16,7 @@
     "@microsoft/sp-lodash-subset": "~1.4.1",
     "@microsoft/sp-office-ui-fabric-core": "~1.4.1",
     "@microsoft/sp-webpart-base": "~1.4.1",
+    "@pnp/spfx-controls-react": "1.4.0",
     "@types/react": "15.6.6",
     "@types/react-dom": "15.5.6",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
@@ -27,20 +28,28 @@
     "react": "15.6.2",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "15.6.2",
+    "react-event-data": "^1.0.6",
+    "react-filterable-table": "^0.3.424",
+    "react-list-view": "^1.0.0",
     "react-progress-bar": "^0.1.0",
     "react-progress-meter": "^1.1.0",
     "react-progressbar": "^15.4.1",
     "react-sweet-progress": "^1.1.0",
+    "react-table-filter": "^1.1.0",
     "react-typestyle-inline": "^0.3.3",
-    "reactstrap": "^6.0.1"
+    "reactable": "^1.0.2",
+    "reactstrap": "^6.0.1",
+    "rx-lite": "^4.0.8"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
     "@microsoft/sp-module-interfaces": "~1.4.1",
     "@microsoft/sp-webpart-workbench": "~1.4.1",
-    "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0",
-    "ajv": "~5.2.2"
+    "ajv": "~5.2.2",
+    "eventemitter-rx": "^1.0.0",
+    "gulp": "~3.9.1",
+    "tablefilter": "^0.6.38"
   }
 }

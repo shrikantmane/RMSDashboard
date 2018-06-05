@@ -7,6 +7,15 @@ import ReactProgressMeter from 'react-progress-meter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Progress from 'react-progressbar';
 
+import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
+import {
+  SPHttpClient,
+  SPHttpClientResponse
+} from '@microsoft/sp-http';
+import { canAnyMenuItemsCheck } from 'office-ui-fabric-react/lib/ContextualMenu';
+
+<link href="path-to-react-table-filter/lib/styles.css" rel="stylesheet" />
+
 export interface IReactSpfxState {
 
   items: [
@@ -18,7 +27,9 @@ export interface IReactSpfxState {
       "Priority": { "Title": "" },
       "Feedback_x0020_Status": "",
       "Positions_x0020_Closed": ""
+
     }]
+
 }
 
 export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebpartProps, IReactSpfxState> {
@@ -35,13 +46,19 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
 
           "Priority": { "Title": "" },
           "Feedback_x0020_Status": "",
-          "Positions_x0020_Closed": ""
+          "Positions_x0020_Closed": "",
+
         }
+
       ]
+
     };
+
     this.getBorderColor = this.getBorderColor.bind(this);
-    this.getpriorityColor = this.getpriorityColor.bind(this);
-    this.DifferenceInDays = this.DifferenceInDays.bind(this);
+    this.getPriorityColor = this.getPriorityColor.bind(this);
+    this.differenceInDays = this.differenceInDays.bind(this);
+    this.GetListData = this.GetListData.bind(this);
+
   }
 
   getBorderColor(Feedback_x0020_Status) {
@@ -64,7 +81,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     return displayColor;
   }
 
-  getpriorityColor(Priority) {
+  getPriorityColor(Priority) {
     let disColor = '#ffffff';
     switch (Priority) {
       case 'High':
@@ -82,7 +99,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     return disColor;
   }
 
-  getdayscolor(status) {
+  getDaysColor(status) {
     let dayColor = '#ffffff';
     if (status.includes("past")) {
       dayColor = '#0A7522';
@@ -93,11 +110,11 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     return dayColor;
   }
 
-  DifferenceInDays(firstDate, secondDate) {
+  differenceInDays(firstDate, secondDate) {
     return Math.round((secondDate - firstDate) / (1000 * 60 * 60 * 24));
   }
 
-  days(noofdays) {
+  noOfDays(noofdays) {
     if (noofdays > 0) {
       var left = Math.abs(noofdays) + ' ' + 'left';
       return left;
@@ -108,16 +125,28 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     }
   }
 
+  GetListData(url: string) {
+    // Retrieves data from SP list  
+    return this.context.spHttpClient.get(url, SPHttpClient.configurations.v1)
+      .then((response: Response) => {
+
+        return response.json();
+
+      });
+  }
+
   public componentDidMount() {
     var reactHandler = this;
     jquery.ajax({
-      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=4&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
+      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
       type: "GET",
       headers: { 'Accept': 'application/json; odata=verbose;' },
       success: function (resultData) {
         reactHandler.setState({
           items: resultData.d.results
+
         });
+
       },
       error: function (jqXHR, textStatus, errorThrown) {
       }
@@ -127,65 +156,117 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
   public render(): React.ReactElement<IRmsPostionsWebpartProps> {
     console.log("this", this);
     let compRef = this;
-    return (
-      <table className="table " >
-        <th className={styles.header} >Title
-            </th>
-        <th className={styles.header}  >Department
-            </th>
-        <th className={styles.header} >Openings
-            </th>
-        <th className={styles.header} >Due date
-            </th>
-        <th className={styles.header} >Priority
-            </th>
-        <th className={styles.header} > Closed
-            </th>
-        <th className={styles.header} ></th>
-        <th className={styles.header} >Status
-            </th>
-        {this.state.items.map(function (item, key) {
-          let displayColor, disColor, dayColor;
-          let noofdays: Number;
-          displayColor = compRef.getBorderColor(item.Feedback_x0020_Status);
-          disColor = compRef.getpriorityColor(item.Priority.Title);
+    let displayColor, disColor, dayColor, status;
+    let noofdays: Number;
+
+    var someArray = this.state.items;
+    for (var _i = 0; _i < someArray.length; _i++) {
+      var item = someArray[_i];
+      displayColor = this.getBorderColor(item.Feedback_x0020_Status);
+      disColor = this.getPriorityColor(item.Priority.Title);
+      console.log(disColor);
+      console.log(item.Priority.Title);
+    }
+   
+
+    const italicText = {
+      color: disColor as 'disColor',
+      background: 'rgba(0,0,0,.075)' as 'grey'
+    }
+    const undertext = {
+      color: dayColor as 'dayColor',
+      background: 'rgba(0,0,0,.075)' as 'grey'
+    }
+
+    const viewFields: IViewField[] = [
+
+      {
+        name: 'Position_x0020_Title',
+        displayName: 'Title',
+        sorting: true,
+        maxWidth: 80,
+
+      },
+      {
+        name: 'Practice.Title',
+        displayName: 'Department',
+        sorting: true,
+        maxWidth: 80
+      },
+      {
+        name: 'No_x0020_of_x0020_Openings',
+        displayName: "Openings",
+        sorting: true,
+        maxWidth: 80
+      },
+      {
+        name: 'Exp_x0020_Date_x0020_of_x0020_Jo',
+        displayName: "Due Date",
+        sorting: true,
+        maxWidth: 80,
+        render: (item: any) => {
           let today;
           let date: any;
           today = new Date();
           date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
           var start = new Date(date);
           var end = new Date(item.Exp_x0020_Date_x0020_of_x0020_Jo);
-          noofdays = compRef.DifferenceInDays(start, end);
-          var status = compRef.days(noofdays);
-          dayColor = compRef.getdayscolor(status);
-          const boldText = {
-            background: displayColor as 'displayColor',
-            color: 'white' as 'white',
-          }
-
-          const italicText = {
-            color: disColor as 'disColor',
-            background: 'rgba(0,0,0,.075)' as 'grey'
-          }
+          noofdays = compRef.differenceInDays(start, end);
+          status = compRef.noOfDays(noofdays);
+          dayColor = compRef.getDaysColor(status);
           const undertext = {
             color: dayColor as 'dayColor',
-            background: 'rgba(0,0,0,.075)' as 'grey'
+
           }
-          return (<tr className={styles.rowStyle} key={key}>
-            <td className="table-active">{item.Position_x0020_Title}</td>
-            <td className="table-active" >{item.Practice.Title}</td>
-            <td className="table-active" >{item.No_x0020_of_x0020_Openings}</td>
-            <td style={undertext} >{status}</td>
-            <td style={italicText}  >{item.Priority.Title}</td>
-            <td className="table-active">
-              <Progress completed={item.Positions_x0020_Closed}
-              />
-            </td>
-            <td className="table-active"  >{item.Positions_x0020_Closed.split('.')[0]}%</td>
-            <td style={boldText} >{item.Feedback_x0020_Status}</td>
-          </tr>);
-        })}
-      </table>
+          return <div style={undertext} >{status}</div>
+        }
+      },
+      {
+        name: 'Priority.Title',
+        displayName: "Priority",
+        sorting: true,
+        maxWidth: 80,
+
+      },
+      {
+        name: 'Positions_x0020_Closed',
+        displayName: "Closed",
+        sorting: true,
+        maxWidth: 80,
+        render: (items: any) => {
+          return <div >
+            <Progress completed={items.Positions_x0020_Closed}
+            />
+            <div >{items.Positions_x0020_Closed.split('.')[0]}%</div>
+          </div>
+        }
+      },
+      {
+        name: 'Feedback_x0020_Status',
+        displayName: "Status",
+        sorting: true,
+        maxWidth: 100,
+        render: (item: any) => {
+          debugger;
+          var dispColor = this.getBorderColor(item.Feedback_x0020_Status);
+          const bolText = {
+            background: dispColor as 'displayColor',
+            color: 'white' as 'white',
+            height: '31px' as '31px',
+            padding: '5px' as '5px'
+          }
+          return <div style={bolText}><span>&nbsp;&nbsp;</span>{item.Feedback_x0020_Status}</div>
+        }
+      }
+    ];
+
+    return (
+      <div>
+        <ListView
+          items={this.state.items}
+          viewFields={viewFields}
+        />
+      </div>
     );
   }
 }

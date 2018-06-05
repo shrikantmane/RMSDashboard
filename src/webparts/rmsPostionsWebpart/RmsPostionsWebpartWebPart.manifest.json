@@ -13,7 +13,8 @@
     "description": { "default": "rms-postions-webpart description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "rms-postions-webpart"
+      "description": "rms-postions-webpart",
+    "sliderproperty":25
     }
   }]
 }
