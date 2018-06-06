@@ -57,6 +57,14 @@
           "manifest": "./src/webparts/rmsProductivityWebpart/RmsProductivityWebpartWebPart.manifest.json"
         }
       ]
+    },
+    "simple-poll-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/simplePoll/SimplePollWebPart.js",
+          "manifest": "./src/webparts/simplePoll/SimplePollWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {
@@ -67,7 +75,8 @@
     "bootstrap": {
       "path": "node_modules/bootstrap/dist/js/bootstrap.min.js",
       "globalName": "bootstrap"
-    }
+    },
+    "sp-client-custom-fields": "node_modules/sp-client-custom-fields/dist/sp-client-custom-fields.bundle.js"
   },
   "localizedResources": {
     "RmsdashboardWebpartWebPartStrings": "lib/webparts/rmsdashboardWebpart/loc/{locale}.js",
@@ -77,6 +86,8 @@
     "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js",
     "RmsInterviewCalenderWebpartWebPartStrings": "lib/webparts/rmsInterviewCalenderWebpart/loc/{locale}.js",
     "RmsProductivityWebpartWebPartStrings": "lib/webparts/rmsProductivityWebpart/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "SimplePollStrings": "lib/webparts/simplePoll/loc/{locale}.js",
+    "sp-client-custom-fields/strings": "node_modules/sp-client-custom-fields/lib/loc/{locale}.js"
   }
 }

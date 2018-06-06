@@ -1,0 +1,21 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "55af7dd1-c201-4398-b175-fb95aa4628b8",
+  "alias": "SimplePollWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+
+  
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "title": { "default": "SimplePoll" },
+    "description": { "default": "To create a poll with result in same webpart, basically its a multi-view webpart" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "SimplePoll"
+    }
+  }]
+}
