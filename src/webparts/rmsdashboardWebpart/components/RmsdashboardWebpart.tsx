@@ -67,10 +67,12 @@ export default class SenderWp extends React.Component<IRmsdashboardWebpartProps,
   public changeState = (item: IDropdownOption): void =>{
       console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
       console.log('current month is: ' + new Date().getMonth());
+   
         this.state = {
           selectedMonthName : item.key.toString()
         }
         this.senderData();
+        
     }
   
 }

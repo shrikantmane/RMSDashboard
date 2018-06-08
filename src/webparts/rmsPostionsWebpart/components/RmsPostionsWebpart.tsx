@@ -39,7 +39,8 @@ export interface IReactSpfxState {
 export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebpartProps, IReactSpfxState> {
 
   private readonly _eventEmitter: RxJsEventEmitter = RxJsEventEmitter.getInstance();
-    
+ 
+
   public constructor(props: IRmsPostionsWebpartProps, state: IReactSpfxState) {
     super(props);
     this.state = {
@@ -143,9 +144,28 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
   }
 
   public componentDidMount() {
+    debugger;
+    let firstDate = null;
+    let enddate: any;
+    let start = null;
+    let end = null;
+
+    let today, year;
+    today = new Date();
+    year = today.getFullYear();
+    var Monthnumber = today.getMonth();
+    var endDay = new Date(year, Monthnumber + 1, 0);
+    console.log(Monthnumber);
+    var endDate = endDay.getFullYear() + '-' + (endDay.getMonth() + 1) + '-' + endDay.getDate() + 'T00:00:00Z';
+    console.log(endDate);
+    var firstDay = new Date(year, Monthnumber, 1);
+    firstDate = firstDay.getFullYear() + '-' + (firstDay.getMonth() + 1) + '-' + firstDay.getDate() + 'T00:00:00Z';
+    console.log(firstDate);
     var reactHandler = this;
     jquery.ajax({
-      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
+
+      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority&$filter=%20Created%20ge%20datetime%27` + firstDate + `%27%20and%20Created%20le%20datetime%27` + endDate + `%27`,
+
       type: "GET",
       headers: { 'Accept': 'application/json; odata=verbose;' },
       success: function (resultData) {
@@ -158,6 +178,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
       error: function (jqXHR, textStatus, errorThrown) {
       }
     });
+
   }
 
   public render(): React.ReactElement<IRmsPostionsWebpartProps> {
@@ -174,7 +195,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
       console.log(disColor);
       console.log(item.Priority.Title);
     }
-   
+
 
     const italicText = {
       color: disColor as 'disColor',
@@ -196,7 +217,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
       },
       {
         name: 'Practice.Title',
-        displayName: 'Department',
+        displayName: 'Departments',
         sorting: true,
         maxWidth: 80
       },
@@ -254,7 +275,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
         sorting: true,
         maxWidth: 100,
         render: (item: any) => {
-          debugger;
+
           var dispColor = this.getBorderColor(item.Feedback_x0020_Status);
           const bolText = {
             background: dispColor as 'displayColor',
@@ -268,18 +289,17 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     ];
 
     return (
-      <div>
+      <div >
         <ListView
           items={this.state.items}
           viewFields={viewFields}
         />
-
       </div>
     );
   }
 
   protected receivedEvent(data: EventData): void {
-    
+
     // update the monthValue with the newly received data from the event subscriber.
     this.state = {
       items: [
@@ -295,16 +315,98 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
 
         }
       ],
-      monthValue : data.selectedMonth
+      monthValue: data.selectedMonth,
     };
+    var a = this.state.monthValue;
+    var Monthnumber = parseInt(a);
+    let firstDate = null;
+    let enddate: any;
+    let start = null;
+    let end = null;
 
+    let today, year;
+    today = new Date();
+    year = today.getFullYear()
+    var endDay = new Date(year, Monthnumber + 1, 0);
+    var endDate = endDay.getFullYear() + '-' + (endDay.getMonth() + 1) + '-' + endDay.getDate() + 'T00:00:00Z';
+    var firstDay = new Date(year, Monthnumber, 1);
+    firstDate = firstDay.getFullYear() + '-' + (firstDay.getMonth() + 1) + '-' + firstDay.getDate() + 'T00:00:00Z';
+    switch (this.state.monthValue) {
+      case '0':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '1':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '2':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '3':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '4':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '5':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '6':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '7':
+        start = firstDate;
+        end = endDate;
+      case '8':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '9':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '10':
+        start = firstDate;
+        end = endDate;
+        break;
+      case '11':
+        start = firstDate;
+        end = endDate;
+        break;
+    }
+    var reactHandler = this;
+    jquery.ajax({
+      // url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority`,
+      // url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority&$filter= Created ge datetime'2018-05-24T00:00:00Z'`,
+      url: `${this.props.siteurl}/_api/web/lists/getbytitle('RRF')/items?$top=${this.props.sliderproperty}&$select=*,Practice/Title,Priority/Title&$expand=Practice,Priority&$filter=%20Created%20ge%20datetime%27` + start + `%27%20and%20Created%20le%20datetime%27` + end + `%27`,
+      type: "GET",
+      headers: { 'Accept': 'application/json; odata=verbose;' },
+      success: function (resultData) {
+        console.log("resultData", resultData);
+        reactHandler.setState({
+          items: resultData.d.results
+
+        });
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log("error");
+      }
+    });
+    console.log("after apicall this.state.items", this.state.items);
     // set new state.
     this.setState((previousState: IReactSpfxState, props: IRmsPostionsWebpartProps): IReactSpfxState => {
+      debugger;
       previousState.monthValue = this.state.monthValue;
       return previousState;
     });
-
   }
+  
 }
 
 
