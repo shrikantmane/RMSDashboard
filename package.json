@@ -38,11 +38,11 @@
     "react-sweet-progress": "^1.1.0",
     "react-table-filter": "^1.1.0",
     "react-typestyle-inline": "^0.3.3",
+    "reactable": "^1.0.2",
     "reactstrap": "^6.0.1",
     "rx-lite": "^4.0.8",
     "sp-pnp-js": "^3.0.8",
-    "ws": "^5.2.0",
-    "reactable": "^1.0.2"
+    "ws": "^5.2.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
