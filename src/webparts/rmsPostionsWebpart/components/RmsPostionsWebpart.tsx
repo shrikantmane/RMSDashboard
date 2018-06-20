@@ -2,11 +2,17 @@ import * as React from 'react';
 import styles from './RmsPostionsWebpart.module.scss';
 import { IRmsPostionsWebpartProps } from './IRmsPostionsWebpartProps';
 import { escape } from '@microsoft/sp-lodash-subset';
+
 import * as jquery from 'jquery';
+import 'jqueryui';
+//import jQuery-ui from 'jquery-ui';
 import ReactProgressMeter from 'react-progress-meter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Progress from 'react-progressbar';
-
+// import Draggable from 'react-draggable'; 
+//import "jquery-ui/build/release.js";
+//import 'jquery-ui/ui/widgets/sortable';
+import Rnd from "react-rnd";
 import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
 import {
   SPHttpClient,
@@ -17,7 +23,16 @@ import { canAnyMenuItemsCheck } from 'office-ui-fabric-react/lib/ContextualMenu'
 import { RxJsEventEmitter } from "../../../libraries/rxJsEventEmitter/RxJsEventEmitter";
 import { EventData } from "../../../libraries/rxJsEventEmitter/EventData";
 
-<link href="path-to-react-table-filter/lib/styles.css" rel="stylesheet" />
+<link href="path-to-react-table-filter/lib/styles.css" rel="stylesheet" /> 
+
+const style = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  border: "solid 1px #ddd",
+  background: "#E6B719"
+};
+
 
 export interface IReactSpfxState {
 
@@ -32,8 +47,9 @@ export interface IReactSpfxState {
       "Positions_x0020_Closed": ""
 
     }],
-    monthValue : string;
-
+    
+    monthValue : string,
+   
 }
 
 export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebpartProps, IReactSpfxState> {
@@ -57,7 +73,9 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
 
         }
       ],
-      monthValue: new Date().getMonth().toLocaleString()
+      
+      monthValue: new Date().getMonth().toLocaleString(),
+      
  };
     // subscribe for event by event name.
     this._eventEmitter.on("myCustomEvent:start", this.receivedEvent.bind(this));
@@ -66,9 +84,10 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     this.getPriorityColor = this.getPriorityColor.bind(this);
     this.differenceInDays = this.differenceInDays.bind(this);
     this.GetListData = this.GetListData.bind(this);
-
+   // this.handleLoginClick = this.handleLoginClick.bind(this);
+   
   }
-
+ 
   getBorderColor(Feedback_x0020_Status) {
     let displayColor = '#ffffff';
     switch (Feedback_x0020_Status) {
@@ -88,6 +107,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     }
     return displayColor;
   }
+
 
   getPriorityColor(Priority) {
     let disColor = '#ffffff';
@@ -132,7 +152,7 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
       return past;
     }
   }
-
+ 
   GetListData(url: string) {
     // Retrieves data from SP list  
     return this.context.spHttpClient.get(url, SPHttpClient.configurations.v1)
@@ -142,9 +162,12 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
 
       });
   }
+ 
 
+   
   public componentDidMount() {
     debugger;
+    
     let firstDate = null;
     let enddate: any;
     let start = null;
@@ -219,7 +242,8 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
         name: 'Practice.Title',
         displayName: 'Departments',
         sorting: true,
-        maxWidth: 80
+        maxWidth: 80,
+        
       },
       {
         name: 'No_x0020_of_x0020_Openings',
@@ -289,15 +313,167 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
     ];
 
     return (
-      <div >
-        <ListView
+    
+      <div className="test" >
+
+        {/* <ListView
           items={this.state.items}
           viewFields={viewFields}
         />
-      </div>
-    );
-  }
+        <Draggable>
+         <div>I can now be moved around!</div>
+        </Draggable> */}
+     
+        {/* <div >
+         <Rnd
+         style={style}
+        size={{ width: this.state.width, height: this.state.height }}
+        position={{ x: this.state.x, y: this.state.y }}
+        onDragStop={(e, d) => {
+          this.setState({ x: d.x, y: d.y });
+        }}
+        onResize={(e, direction, ref, delta, position) => {
+          this.setState({
+            width: ref.offsetWidth,
+            height: ref.offsetHeight,
+            ...position,
+           
+          });
+        }}
+      >
+        Rnd
+      </Rnd>
+      </div> */}
+    
+        
+         <table className="table"  >
+        
+      {/* <TableFilter 
+rows={this.state.items} 
+ onFilterUpdate={this.filterUpdated}
+ >
+  <th className={styles.header}  > Title
+         </th>
+  </TableFilter>    */}
 
+
+ 
+    
+     <th className={styles.header}  > Title
+         </th>
+     <th className={styles.header}   >Department
+         </th>
+     <th className={styles.header}  >Opening
+         </th>
+     <th className={styles.header}   >Due date
+         </th>
+     <th className={styles.header}  >Priority
+         </th>
+     <th className={styles.header}  > Closed
+         </th>
+     <th className={styles.header}  ></th>
+     <th className={styles.header}  >Status
+         </th>
+        
+     {this.state.items.map(function (item, key) {
+       let displayColor, disColor, dayColor;
+       let noofdays: Number;
+       
+       displayColor = compRef.getBorderColor(item.Feedback_x0020_Status);
+       disColor = compRef.getPriorityColor(item.Priority.Title);
+       let today;
+       let date: any;
+       today = new Date();
+       date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+       var start = new Date(date);
+       var end = new Date(item.Exp_x0020_Date_x0020_of_x0020_Jo);
+       noofdays = compRef.differenceInDays(start, end);
+       var status = compRef.noOfDays(noofdays);
+       
+     
+       dayColor = compRef.getDaysColor(status);
+       const boldText = {
+         background: displayColor as 'displayColor',
+         color: 'white' as 'white',
+       }
+
+       const italicText = {
+         color: disColor as 'disColor',
+         background: 'rgba(0,0,0,.075)' as 'grey'
+       }
+       const undertext = {
+         color: dayColor as 'dayColor',
+         background: 'rgba(0,0,0,.075)' as 'grey'
+       }
+       
+// jquery('#myTable').DataTable( {
+//         colReorder: true
+//               } );
+
+
+ 
+
+     /////////////////////////
+     
+
+
+  //      let element: HTMLElement = document.getElementsByClassName('table')[0] as HTMLElement;
+   
+  //      var dragger = tableDragger(element, {
+  //      mode: 'column',
+  //     dragHandler: '.handle',
+  //     onlyBody: false,
+  //     animation: 300
+  //       });
+  //   dragger.on('drop',function(from, to){
+
+  //             });
+  // //   $('#tab').dragtable({ 
+  //     persistState: function(table) { 
+  //       if (!window.sessionStorage) return; 
+  //       var ss = window.sessionStorage; 
+  //       table.el.find('th').each(function(i) { 
+  //         if(this.id != '') {table.sortOrder[this.id]=i;} 
+  //       }); 
+  //       ss.setItem('tableorder',JSON.stringify(table.sortOrder)); 
+  //     }, 
+  //     restoreState: eval('(' + window.sessionStorage.getItem('tableorder') + ')') 
+  // }); 
+  
+       return ( 
+        
+       <tr className={styles.rowStyle} key={key}>
+        
+       
+      
+         <td className="table-active"  >{item.Position_x0020_Title}</td>
+         <td className="table-active" >{item.Practice.Title}</td>
+         <td className="table-active" >{item.No_x0020_of_x0020_Openings}</td>
+         <td style={undertext}  >{status}</td>
+         <td style={italicText} >{item.Priority.Title}</td>
+         <td className="table-active">
+           <Progress completed={item.Positions_x0020_Closed}
+           />
+         </td>
+         <td className="table-active"  >{item.Positions_x0020_Closed.split('.')[0]}%</td>
+         <td style={boldText} >{item.Feedback_x0020_Status}  </td>
+        
+        
+       </tr>);
+      
+     })
+     
+     }
+    
+         
+   </table>
+ 
+      </div>
+      
+    );
+ 
+  }
+  
   protected receivedEvent(data: EventData): void {
 
     // update the monthValue with the newly received data from the event subscriber.
@@ -315,7 +491,10 @@ export default class RmsPostionsWebpart extends React.Component<IRmsPostionsWebp
 
         }
       ],
+     
       monthValue: data.selectedMonth,
+    
+      
     };
     var a = this.state.monthValue;
     var Monthnumber = parseInt(a);
