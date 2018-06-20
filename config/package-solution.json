@@ -3,7 +3,7 @@
   "solution": {
     "name": "rms-dashboard-client-side-solution",
     "id": "fe281dff-ed4b-47e1-8f7f-d9465b63651b",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true
   },
   "paths": {

@@ -4,6 +4,8 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "jsx": "react",
+    // "TableFilter":"filterkey" ,
+    
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,

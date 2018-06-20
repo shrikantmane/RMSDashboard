@@ -10,18 +10,14 @@ import {
 import * as strings from 'RmsdashboardWebpartWebPartStrings';
 import RmsdashboardWebpart from './components/RmsdashboardWebpart';
 import { IRmsdashboardWebpartProps } from './components/IRmsdashboardWebpartProps';
+import { IRmsdashboardWebpartWebPartProps } from './IRmsdashboardWebpartWebPartProps';
 
-export interface IRmsdashboardWebpartWebPartProps {
-  description: string;
-}
-
-export default class RmsdashboardWebpartWebPart extends BaseClientSideWebPart<IRmsdashboardWebpartWebPartProps> {
+export default class SenderWpWebPart extends BaseClientSideWebPart<IRmsdashboardWebpartWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IRmsdashboardWebpartProps > = React.createElement(
-      RmsdashboardWebpart,
-      {
-        description: this.properties.description
+      RmsdashboardWebpart,{
+       
       }
     );
 
